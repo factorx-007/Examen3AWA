@@ -13,6 +13,14 @@ const pool = new Pool({
 
 // Inicialización de Express
 const app = express();
+
+// Configuración de CORS
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://examen3front.onrender.com'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());  // Middleware para parsear JSON
 
 // Ejemplo de ruta básica (luego expandiremos)
@@ -27,12 +35,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 }); 
-
-
-
-// Configura CORS para permitir solicitudes desde localhost y tu dominio
-app.use(cors({
-  origin: ['http://localhost:3000', 'https://examen3awa.onrender.com'],  // Ajusta según sea necesario
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
